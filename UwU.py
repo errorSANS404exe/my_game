@@ -77,6 +77,7 @@ def test(keys):
         for mario in list:
             list.remove(mario)
             sprite.remove(mario)
+
 # n=889
 # n2=345
 # n3=n
@@ -95,5 +96,11 @@ def test(keys):
 # klass.append(dict)
 # dict={"name":"Vadim","age":17,"weight":54}
 # klass.append(dict)
-# dict={"name":"Egor","age":17,"weight":52}
+# dict={"name":"Egor","age":18,"weight":52}
 # klass.append(dict)
+# #del dict
+# print(klass[1]["age"])
+# klass[1]["age"]+=1
+# #klass[2]["year"]=2022-klass[2]["age"]
+# for name in klass:
+#     name["year"]=2022-name["age"]
