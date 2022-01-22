@@ -24,9 +24,16 @@ sprite.set_size(mario4, sprite.get_width(n_4), sprite.get_height(n_4))
 
 m = sprite.add("mario-2-big", sprite.get_x(n_1), 0, "jump")
 sprite.set_size(m, sprite.get_width(n_1), sprite.get_height(n_1))
+w = {"number": m, "flight": 5}
 
 m2 = sprite.add("mario-2-big", sprite.get_x(n_4), 0, "walk3")
 sprite.set_size(m2, sprite.get_width(n_4), sprite.get_height(n_4))
+a = {"number": m2, "flight": 6}
+
+m3 = sprite.add("mario-2-big", sprite.get_x(n_3), 0, "swim6")
+sprite.set_size(m3, sprite.get_width(n_3), sprite.get_height(n_3))
+s = {"number": m3, "flight": 2}
+mario_list = [w, a, s]
 
 
 @wrap.on_key_down(UwU.K_z, UwU.K_x, UwU.K_PERIOD, UwU.K_COMMA)
@@ -59,24 +66,13 @@ def key_up(keys):
 @wrap.always
 def move5():
     world.set_title(int(time.time() - t))
-    if int(time.time() - t) >= 3:
-        sprite.move(m, 0, 10)
-    if int(time.time() - t) >= 5:
-        sprite.move(m2, 0, 10)
-
-
-list = []
-
-
-@wrap.always
-def test(keys):
-    mario = sprite.add("mario-2-big", random.randint(1, 1000), random.randint(1, 1000), "jump")
-    list.append(mario)
-    print(list)
-    if wrap.K_z in keys:
-        for mario in list:
-            list.remove(mario)
-            sprite.remove(mario)
+    for all in mario_list:
+        if int(time.time() - t) >= all["flight"]:
+            sprite.move(all["number"], 0, 10)
+    # if int(time.time() - t) >= w["flight"]:
+    #     sprite.move(w["number"], 0, 10)
+    # if int(time.time() - t) >= a["flight"]:
+    #     sprite.move(a["number"], 0, 10)
 
 # n=889
 # n2=345
