@@ -22,18 +22,26 @@ sprite.set_size(mario3, sprite.get_width(n_3), sprite.get_height(n_3))
 mario4 = sprite.add("mario-2-big", sprite.get_x(n_4), sprite.get_y(n_4), "walk3", False)
 sprite.set_size(mario4, sprite.get_width(n_4), sprite.get_height(n_4))
 
-m = sprite.add("mario-2-big", sprite.get_x(n_1), 0, "jump")
-sprite.set_size(m, sprite.get_width(n_1), sprite.get_height(n_1))
-w = {"number": m, "flight": 5}
+# m = sprite.add("mario-2-big", sprite.get_x(n_1), -75, "jump")
+# sprite.set_size(m, sprite.get_width(n_1), sprite.get_height(n_1))
+# w = {"number": m, "flight": 5}
+#
+# m2 = sprite.add("mario-2-big", sprite.get_x(n_4), -75, "walk3")
+# sprite.set_size(m2, sprite.get_width(n_4), sprite.get_height(n_4))
+# a = {"number": m2, "flight": 6}
+#
+# m3 = sprite.add("mario-2-big", sprite.get_x(n_3), -75, "swim6")
+# sprite.set_size(m3, sprite.get_width(n_3), sprite.get_height(n_3))
+# s = {"number": m3, "flight": 2}
+mario_list = []
 
-m2 = sprite.add("mario-2-big", sprite.get_x(n_4), 0, "walk3")
-sprite.set_size(m2, sprite.get_width(n_4), sprite.get_height(n_4))
-a = {"number": m2, "flight": 6}
-
-m3 = sprite.add("mario-2-big", sprite.get_x(n_3), 0, "swim6")
-sprite.set_size(m3, sprite.get_width(n_3), sprite.get_height(n_3))
-s = {"number": m3, "flight": 2}
-mario_list = [w, a, s]
+chain = []
+a = {"time": 1, "who": n_2}
+chain.append(a)
+a = {"time": 4, "who": n_2}
+chain.append(a)
+a = {"time": 5, "who": n_1}
+chain.append(a)
 
 
 @wrap.on_key_down(UwU.K_z, UwU.K_x, UwU.K_PERIOD, UwU.K_COMMA)
@@ -67,13 +75,22 @@ def key_up(keys):
 def move5():
     world.set_title(int(time.time() - t))
     for all in mario_list:
-        if int(time.time() - t) >= all["flight"]:
-            sprite.move(all["number"], 0, 10)
+        #        if int(time.time() - t) >= all["flight"]:
+        sprite.move(all["number"], 0, 10)
     # if int(time.time() - t) >= w["flight"]:
     #     sprite.move(w["number"], 0, 10)
     # if int(time.time() - t) >= a["flight"]:
     #     sprite.move(a["number"], 0, 10)
 
+
+@wrap.always
+def creation():
+    for a in chain:
+        if int(time.time() - t) >= a["time"]:
+            d = sprite.add("mario-2-big", sprite.get_x(a["who"]), -75, "jump")
+            sprite.set_size(d, sprite.get_width(a["who"]), sprite.get_height(a["who"]))
+            w = {"number": d}
+            mario_list.append(w)
 # n=889
 # n2=345
 # n3=n
