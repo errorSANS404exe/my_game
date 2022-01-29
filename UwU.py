@@ -10,6 +10,7 @@ n_1 = sprite.add("black_mario", 400, 500, "jump")
 n_2 = sprite.add("black_mario", 500, 500, "stand")
 n_3 = sprite.add("black_mario", 600, 500, "swim6")
 n_4 = sprite.add("black_mario", 700, 500, "walk3")
+numbers = [n_1, n_2, n_3, n_4]
 mario1 = sprite.add("mario-2-big", sprite.get_x(n_1), sprite.get_y(n_1), "jump", False)
 sprite.set_size(mario1, sprite.get_width(n_1), sprite.get_height(n_1))
 
@@ -36,11 +37,11 @@ sprite.set_size(mario4, sprite.get_width(n_4), sprite.get_height(n_4))
 mario_list = []
 
 chain = []
-a = {"time": 1, "who": n_2}
+a = {"time": random.randint(1, 10), "who": random.choice(numbers)}
 chain.append(a)
-a = {"time": 4, "who": n_2}
+a = {"time": random.randint(1, 10), "who": random.choice(numbers)}
 chain.append(a)
-a = {"time": 5, "who": n_1}
+a = {"time": random.randint(1, 10), "who": random.choice(numbers)}
 chain.append(a)
 
 
@@ -87,10 +88,11 @@ def move5():
 def creation():
     for a in chain:
         if int(time.time() - t) >= a["time"]:
-            d = sprite.add("mario-2-big", sprite.get_x(a["who"]), -75, "jump")
+            d = sprite.add("mario-2-big", sprite.get_x(a["who"]), -75, sprite.get_costume(a["who"]))
             sprite.set_size(d, sprite.get_width(a["who"]), sprite.get_height(a["who"]))
             w = {"number": d}
             mario_list.append(w)
+            chain.remove(a)
 # n=889
 # n2=345
 # n3=n
