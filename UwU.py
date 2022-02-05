@@ -40,10 +40,12 @@ chain = []
 a = {"time": random.randint(1, 10), "who": random.choice(numbers)}
 chain.append(a)
 
-
+x = 1
 for y in range(50):
-    a = {"time": random.randint(8, 8), "who": random.choice(numbers)}
+    x += random.randint(1, 4)
+    a = {"time": x, "who": random.choice(numbers)}
     chain.append(a)
+
 
 @wrap.on_key_down(UwU.K_z, UwU.K_x, UwU.K_PERIOD, UwU.K_COMMA)
 def buttons(keys):
@@ -93,8 +95,6 @@ def creation():
             w = {"number": d}
             mario_list.append(w)
             chain.remove(a)
-
-
 
 # n=889
 # n2=345
