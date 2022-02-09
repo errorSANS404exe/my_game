@@ -78,12 +78,7 @@ def key_up(keys):
 def move5():
     world.set_title(int(time.time() - t))
     for all in mario_list:
-        #        if int(time.time() - t) >= all["flight"]:
         sprite.move(all["number"], 0, 10)
-    # if int(time.time() - t) >= w["flight"]:
-    #     sprite.move(w["number"], 0, 10)
-    # if int(time.time() - t) >= a["flight"]:
-    #     sprite.move(a["number"], 0, 10)
 
 
 @wrap.always
@@ -95,6 +90,10 @@ def creation():
             w = {"number": d}
             mario_list.append(w)
             chain.remove(a)
+
+
+sprite.add_text("Score:0", 200, 230, font_size=100)
+if sprite.is_collide_sprite(mario1,mario_list)
 
 # n=889
 # n2=345
