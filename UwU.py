@@ -93,7 +93,14 @@ def creation():
 
 
 sprite.add_text("Score:0", 200, 230, font_size=100)
-if sprite.is_collide_sprite(mario1,mario_list)
+
+
+@wrap.always
+def test():
+    for a in mario_list:
+        if sprite.is_collide_sprite(mario1, a["number"]) and sprite.is_visible(mario1):
+            sprite.remove(a["number"])
+            mario_list.remove(a)
 
 # n=889
 # n2=345
