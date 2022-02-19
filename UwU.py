@@ -1,6 +1,6 @@
 import wrap
 import wrap as UwU, time, random
-from wrap import world, sprite
+from wrap import world, sprite, sprite_text
 
 t = time.time()
 UwU.add_sprite_dir("my_sprites")
@@ -92,7 +92,7 @@ def creation():
             chain.remove(a)
 
 
-sprite.add_text("Score:0", 200, 230, font_size=100)
+text = sprite.add_text("0", 200, 230, font_size=100)
 
 
 @wrap.always
@@ -101,6 +101,9 @@ def test():
         if sprite.is_collide_sprite(mario1, a["number"]) and sprite.is_visible(mario1):
             sprite.remove(a["number"])
             mario_list.remove(a)
+            sprite_text.set_text(text, str(int(sprite_text.get_text(text))+5))
+            sprite_text.get_text(text)
+
 
 # n=889
 # n2=345
