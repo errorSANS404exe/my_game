@@ -92,18 +92,22 @@ def creation():
             chain.remove(a)
 
 
-text = sprite.add_text("0", 200, 230, font_size=100)
+text = sprite.add_text("Score:0", 200, 230, font_size=100)
+score = 0
 
 
-@wrap.always
+
 def test():
+    global score
     for a in mario_list:
         if sprite.is_collide_sprite(mario1, a["number"]) and sprite.is_visible(mario1):
             sprite.remove(a["number"])
             mario_list.remove(a)
-            sprite_text.set_text(text, str(int(sprite_text.get_text(text))+5))
-            sprite_text.get_text(text)
-
+            score = score + 5
+            sprite_text.set_text(text, 'Score:' + str(score))
+        if sprite.is_collide_sprite(mario1, a["number"]) == False and sprite.is_visible(mario1):
+            score-=1
+            sprite_text.set_text(text, 'Score:' + str(score))
 
 # n=889
 # n2=345
